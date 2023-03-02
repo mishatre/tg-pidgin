@@ -8,8 +8,9 @@ services:
       dockerfile: Dockerfile
       target: deploy
     environment:
-      - TELEGRAM_BOT_TOKEN=
-      - TELEGRAM_FORUM_CHAT=
-      - XMPP_SERVICE=
-      - XMPP_USERNAME=
-      - XMPP_PASSWORD=
+      - TELEGRAM_BOT_TOKEN=${TELEGRAM_BOT_TOKEN}
+      - TELEGRAM_FORUM_CHAT=${TELEGRAM_FORUM_CHAT}
+      - XMPP_SERVICE=${XMPP_SERVICE}
+      - XMPP_USERNAME=${XMPP_USERNAME}
+      - XMPP_PASSWORD=${XMPP_PASSWORD}
+    restart: always

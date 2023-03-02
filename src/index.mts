@@ -143,8 +143,8 @@ bot.on('message', async (msg) => {
     const topicId = msg.message_thread_id;
 
     if (msg.forum_topic_closed) {
-        await bot.deleteForumTopic(chatId, topicId);
-        await db.removeTopic(topicId);
+        // await bot.deleteForumTopic(chatId, topicId);
+        // await db.removeTopic(topicId);
         return;
     } else if (msg.forum_topic_created) {
 
@@ -153,7 +153,7 @@ bot.on('message', async (msg) => {
         if (topicInfo) {
 
             if (topicInfo.topicId !== topicId) {
-                await bot.deleteForumTopic(chatId, topicId);
+                await bot.closeForumTopic(chatId, topicId);
                 await bot.sendMessage(chatId, `Topic already exist: ${topicInfo.name}`);
             }
 
@@ -163,7 +163,7 @@ bot.on('message', async (msg) => {
 
         const foundRoster = await db.findRoster(topicName);
         if (!foundRoster) {
-            await bot.deleteForumTopic(chatId, topicId);
+            await bot.closeForumTopic(chatId, topicId);
             await bot.sendMessage(chatId, `User not found: ${msg.text}`);
             return;
         }
@@ -176,7 +176,7 @@ bot.on('message', async (msg) => {
 
         const topicInfo = db.getTopic(topicId);
         if (!topicInfo) {
-            await bot.deleteForumTopic(chatId, topicId);
+            await bot.closeForumTopic(chatId, topicId);
             await bot.sendMessage(chatId, `Topic not found: ${topicId}`);
             await db.removeTopic(topicId);
             return;
@@ -189,7 +189,7 @@ bot.on('message', async (msg) => {
 
         const foundRoster = await db.findRoster(topicInfo.name);
         if (!foundRoster) {
-            await bot.deleteForumTopic(chatId, topicId);
+            await bot.closeForumTopic(chatId, topicId);
             await bot.sendMessage(chatId, `User not found: ${msg.text}`);
             await db.removeTopic(topicId);
             return;

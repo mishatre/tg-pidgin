@@ -24,4 +24,4 @@ COPY --from=build /usr/src/app/dist ./dist
 COPY --from=build /usr/src/app/node_modules ./node_modules
 COPY . .
 
-CMD ["node", "dist/index.js"];
+CMD ["node", "dist/index.mjs"];

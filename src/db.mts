@@ -8,7 +8,7 @@ import { JSONFile } from 'lowdb/node'
 
 // File path
 const __dirname = dirname(fileURLToPath(import.meta.url));
-const file = join(__dirname, '../data.json');
+const file = join(__dirname, '../data/data.json');
 
 interface Data {
     topics: {

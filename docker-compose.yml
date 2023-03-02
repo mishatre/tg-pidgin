@@ -14,3 +14,5 @@ services:
       - XMPP_USERNAME=${XMPP_USERNAME}
       - XMPP_PASSWORD=${XMPP_PASSWORD}
     restart: always
+    volumes:
+    - ./data:/usr/src/app/data

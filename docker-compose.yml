@@ -1,0 +1,15 @@
+
+version: '3'
+
+services:
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+      target: deploy
+    environment:
+      - TELEGRAM_BOT_TOKEN=
+      - TELEGRAM_FORUM_CHAT=
+      - XMPP_SERVICE=
+      - XMPP_USERNAME=
+      - XMPP_PASSWORD=
